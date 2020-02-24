@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import { login } from '../../actions/authActions';
+import { login } from '../../../actions/authActions';
 
 const SignupSchema = Yup.object().shape({
   email: Yup.string()
@@ -23,12 +23,13 @@ const LogInForm = (props) => {
 
   const submit = (user) => {
     props.login(user);
+    console.log(props);
   }
 
   return (
     <div>
       <h1>Log In</h1>
-      {props.error ? <p>{props.error}</p> : null}
+      {props.error ? <p>{props.error.message}</p> : null}
       <Formik
         initialValues={signUpValues}
         validationSchema={SignupSchema}

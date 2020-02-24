@@ -16,6 +16,7 @@ export const login = (user) => dispatch => {
   })
   axios.post('http://localhost:6161/auth/login', user)
     .then(res => {
+      console.log(res)
       dispatch({
         type: LOG_IN_SUCCESS,
         payload: res.data,
@@ -25,7 +26,7 @@ export const login = (user) => dispatch => {
     .catch(err => {
       dispatch({
         type: LOG_IN_FAIL,
-        error: err
+        error: err.response
       })
     })
 }
@@ -43,10 +44,9 @@ export const signup = (user) => dispatch => {
       })
     })
     .catch(err => {
-      console.log('ERROR')
       dispatch({
         type:  SIGN_UP_FAIL,
-        error: err
+        error: err.response
       })
     })
 }
