@@ -1,19 +1,20 @@
 import React, {useState, useEffect} from 'react';
 import LogInForm from './comps/LogInForm';
 import SignUpForm from './comps/SignUpForm';
+import { connect } from 'react-redux';
+import { clearErrors } from '../../actions/authActions';
 import './Home.scss'
 
 const Home = (props) => {
   const [formSelection, setForm] = useState(props.match.path);
-  useEffect(()=>{
+
+  useEffect(() => {
     setForm(props.match.path);
   }, [props.match.path])
+
   const formShouldRender = () => {
-    console.log(formSelection)
-    if(formSelection === '/SignUp'){
-      return true;
-    }
-    return false;
+    props.clearErrors();
+    return formSelection === '/SignUp' ? true : false;
   }
 
   return(
@@ -24,11 +25,11 @@ const Home = (props) => {
         <div className="half">
           { formShouldRender()
             ? <SignUpForm {...props.history}/>
-            : <LogInForm {...props.history}/> }
+            : <LogInForm  {...props.history}/> }
         </div>
       </div>
     </div>
   )
 }
 
-export default Home;
+export default connect(null, {clearErrors})(Home);

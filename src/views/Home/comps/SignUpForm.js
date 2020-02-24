@@ -1,4 +1,5 @@
 import React from 'react';
+import ErrorText from './ErrorText';
 import { connect } from 'react-redux'
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
@@ -25,15 +26,15 @@ const signUpValues = {
 };
 
 const SignUpForm = (props) => {
+
   const submit = (user) => {
     props.signup(user)
-    console.log(props.accessToken)
   }
 
   return (
     <div>
       <h1>Signup</h1>
-      {props.error ? <p>{props.error}</p> : null}
+      <ErrorText error={props.auth.error}/>
       <FormWrapper submit={submit}/>
       <p>Have an account <span onClick={()=>{props.push('/LogIn')}}>Log in</span></p>
     </div>
@@ -54,7 +55,7 @@ const FormWrapper = (props) => {
           {errors.email && touched.email ? <div>{errors.email}</div> : null}
           <Field name="password" placeholder="password"/>
           {errors.password && touched.password ? <div>{errors.password}</div> : null}
-          <button type="submit">Submit</button>
+          <button type="submit" disabled={props.auth.attemptingLogIn}>Submit</button>
         </Form>
       )}
     </Formik>
@@ -62,9 +63,7 @@ const FormWrapper = (props) => {
 }
 
 
-const mapStateToProps = state => {
-  return state.auth;
-};
+const mapStateToProps = state => ({auth: state.auth});
 
 export default connect(
     mapStateToProps,

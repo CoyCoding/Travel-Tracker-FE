@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import ErrorText from './ErrorText';
 import { connect } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
@@ -20,24 +21,18 @@ const signUpValues = {
 };
 
 const LogInForm = (props) => {
-  const [error, setError] = useState(props.error);
 
   const submit = (user) => {
     props.login(user);
   }
 
-  const toggleForm = () => {
-    console.log(props)
-    props.push('/SignUp')
-  }
-  console.log(props);
   return (
     <div>
       <h1>Log In</h1>
-      {error ? <p>{error}</p> : null}
+      <ErrorText error={props.auth.error}/>
       <FormWrapper submit={submit}/>
       <p>Don't have an acount
-        <span onClick={()=>{toggleForm()}}>sign up</span>
+        <span onClick={()=>{ props.push('/SignUp') }}>sign up</span>
       </p>
     </div>
   )
@@ -63,10 +58,6 @@ const FormWrapper = (props) => {
 }
 
 
-const mapStateToProps = state =>{
-  return state.auth;
-}
-export default connect(
-    mapStateToProps,
-    {login}
-)(LogInForm);
+const mapStateToProps = state => ({auth: state.auth})
+
+export default connect(mapStateToProps, {login})(LogInForm);

@@ -6,6 +6,7 @@ import {
     SIGNING_UP,
     SIGN_UP_SUCCESS,
     SIGN_UP_FAIL,
+    CLEAR_ERRORS,
 } from '../actions/authActions'
 
 const initialState = {
@@ -64,6 +65,12 @@ const authReducer = (state = initialState, action) => {
           return{
               ...state,
               isLoggedIn: false,
+          }
+        case CLEAR_ERRORS:
+        console.log('clear errors')
+          return{
+            ...state,
+            error: undefined,
           }
         default:
           return state

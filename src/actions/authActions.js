@@ -10,6 +10,8 @@ export const SIGN_UP_FAIL = "SIGN_UP_FAIL";
 
 export const LOG_OUT = "LOG_OUT_SUCCESS";
 
+export const CLEAR_ERRORS = "CLEAR_ERRORS";
+
 export const login = (user) => dispatch => {
   dispatch({
     type: LOGGING_IN
@@ -28,6 +30,12 @@ export const login = (user) => dispatch => {
         error: err.response.data.error
       })
     })
+}
+
+export const clearErrors = () => dispatch => {
+  dispatch({
+    type: CLEAR_ERRORS
+  });
 }
 
 export const signup = (user) => dispatch => {
