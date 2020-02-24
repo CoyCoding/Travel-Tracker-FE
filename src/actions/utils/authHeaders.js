@@ -1,5 +1,5 @@
 export const authHeaders = {
     headers: {
-        "access-token" : `bearer ${localStorage.getItem('accessToken')}`,
+        "access-token" : `bearer ${localStorage.getItem('access-token')}`,
     }
 }

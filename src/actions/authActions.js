@@ -16,7 +16,7 @@ export const login = (user) => dispatch => {
   dispatch({
     type: LOGGING_IN
   });
-  axios.post('http://localhost:6161/auth/login', user)
+  axios.post('/auth/login', user)
     .then(res => {
       dispatch({
         type: LOG_IN_SUCCESS,
@@ -27,7 +27,7 @@ export const login = (user) => dispatch => {
     .catch(err => {
       dispatch({
         type: LOG_IN_FAIL,
-        error: err.response.data.error
+        error: err.response.data.error || 'API down'
       })
     })
 }
@@ -42,7 +42,7 @@ export const signup = (user) => dispatch => {
   dispatch({
     type: SIGNING_UP
   });
-  axios.post('http://localhost:6161/auth/sign-up', user)
+  axios.post('/auth/sign-up', user)
     .then(res => {
       dispatch({
         type: SIGN_UP_SUCCESS,
@@ -54,7 +54,7 @@ export const signup = (user) => dispatch => {
       console.log(err)
       dispatch({
         type:  SIGN_UP_FAIL,
-        error: err.response.data.error
+        error: err.response.data.error || 'API down'
       })
     });
 }
