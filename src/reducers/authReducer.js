@@ -17,7 +17,6 @@ const initialState = {
 
 const authReducer = (state = initialState, action) => {
     switch(action.type) {
-        // Get Menu
         case LOGGING_IN:
           return {
               ...state,

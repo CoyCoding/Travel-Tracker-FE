@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
@@ -20,33 +20,48 @@ const signUpValues = {
 };
 
 const LogInForm = (props) => {
+  const [error, setError] = useState(props.error);
 
   const submit = (user) => {
     props.login(user);
-    console.log(props);
   }
 
+  const toggleForm = () => {
+    console.log(props)
+    props.push('/SignUp')
+  }
+  console.log(props);
   return (
     <div>
       <h1>Log In</h1>
-      {props.error ? <p>{props.error.message}</p> : null}
-      <Formik
-        initialValues={signUpValues}
-        validationSchema={SignupSchema}
-        onSubmit={(values) => submit(values)}>
-        {({ errors, touched }) => (
-          <Form>
-            <Field name="email" type="email" placeholder="email" />
-            {errors.email && touched.email ? <div>{errors.email}</div> : null}
-            <Field name="password" placeholder="password" />
-            {errors.password && touched.password ? <div>{errors.password}</div> : null}
-            <button type="submit">Submit</button>
-          </Form>
-        )}
-      </Formik>
+      {error ? <p>{error}</p> : null}
+      <FormWrapper submit={submit}/>
+      <p>Don't have an acount
+        <span onClick={()=>{toggleForm()}}>sign up</span>
+      </p>
     </div>
   )
 }
+
+const FormWrapper = (props) => {
+  return (
+    <Formik
+      initialValues={signUpValues}
+      validationSchema={SignupSchema}
+      onSubmit={(values) => props.submit(values)}>
+      {({ errors, touched }) => (
+        <Form>
+          <Field name="email" type="email" placeholder="email" />
+          {errors.email && touched.email ? <div>{errors.email}</div> : null}
+          <Field name="password" placeholder="password" />
+          {errors.password && touched.password ? <div>{errors.password}</div> : null}
+          <button type="submit">Submit</button>
+        </Form>
+      )}
+    </Formik>
+  )
+}
+
 
 const mapStateToProps = state =>{
   return state.auth;

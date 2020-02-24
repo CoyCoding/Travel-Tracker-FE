@@ -1,10 +1,20 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import LogInForm from './comps/LogInForm';
 import SignUpForm from './comps/SignUpForm';
 import './Home.scss'
 
 const Home = (props) => {
-  const [signUp, toggleLogForm] = useState(true);
+  const [formSelection, setForm] = useState(props.match.path);
+  useEffect(()=>{
+    setForm(props.match.path);
+  }, [props.match.path])
+  const formShouldRender = () => {
+    console.log(formSelection)
+    if(formSelection === '/SignUp'){
+      return true;
+    }
+    return false;
+  }
 
   return(
     <div id="home">
@@ -12,10 +22,9 @@ const Home = (props) => {
         <div className="half">
         </div>
         <div className="half">
-          { signUp ? <SignUpForm/> : <LogInForm/> }
-          <p> already have an account?
-            <span onClick={() => toggleLogForm(!signUp)}>Log in</span>
-          </p>
+          { formShouldRender()
+            ? <SignUpForm {...props.history}/>
+            : <LogInForm {...props.history}/> }
         </div>
       </div>
     </div>

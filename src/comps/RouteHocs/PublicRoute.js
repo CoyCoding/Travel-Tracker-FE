@@ -4,9 +4,7 @@ import { connect } from 'react-redux'
 
 const PublicRoute = ({ component: Component, auth, ...rest }) =>  (
   <Route {...rest} render={ (props) => {
-      if (auth.attemptingLogIn ){
-        return <h1>Loading...</h1>;
-      } else if (auth.isLoggedIn){
+      if (auth.isLoggedIn){
         return <Redirect to="/Home" />
       } else {
         return <Component {...props}/>

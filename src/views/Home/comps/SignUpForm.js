@@ -33,26 +33,34 @@ const SignUpForm = (props) => {
   return (
     <div>
       <h1>Signup</h1>
-      {props.error ? <p>{props.error.message}</p> : null}
-      <Formik
-        initialValues={signUpValues}
-        validationSchema={SignupSchema}
-        onSubmit={(values)=> submit(values)}>
-        {({ errors, touched }) => (
-          <Form>
-            <Field name="username" placeholder="username"/>
-            {errors.username && touched.username ? <div>{errors.username}</div> : null}
-            <Field name="email" type="email" placeholder="email"/>
-            {errors.email && touched.email ? <div>{errors.email}</div> : null}
-            <Field name="password" placeholder="password"/>
-            {errors.password && touched.password ? <div>{errors.password}</div> : null}
-            <button type="submit">Submit</button>
-          </Form>
-        )}
-      </Formik>
+      {props.error ? <p>{props.error}</p> : null}
+      <FormWrapper submit={submit}/>
+      <p>Have an account <span onClick={()=>{props.push('/LogIn')}}>Log in</span></p>
     </div>
   )
 }
+
+const FormWrapper = (props) => {
+  return(
+    <Formik
+      initialValues={signUpValues}
+      validationSchema={SignupSchema}
+      onSubmit={(values)=> props.submit(values)}>
+      {({ errors, touched }) => (
+        <Form>
+          <Field name="username" placeholder="username"/>
+          {errors.username && touched.username ? <div>{errors.username}</div> : null}
+          <Field name="email" type="email" placeholder="email"/>
+          {errors.email && touched.email ? <div>{errors.email}</div> : null}
+          <Field name="password" placeholder="password"/>
+          {errors.password && touched.password ? <div>{errors.password}</div> : null}
+          <button type="submit">Submit</button>
+        </Form>
+      )}
+    </Formik>
+  )
+}
+
 
 const mapStateToProps = state => {
   return state.auth;

@@ -13,10 +13,9 @@ export const LOG_OUT = "LOG_OUT_SUCCESS";
 export const login = (user) => dispatch => {
   dispatch({
     type: LOGGING_IN
-  })
+  });
   axios.post('http://localhost:6161/auth/login', user)
     .then(res => {
-      console.log(res)
       dispatch({
         type: LOG_IN_SUCCESS,
         payload: res.data,
@@ -26,7 +25,7 @@ export const login = (user) => dispatch => {
     .catch(err => {
       dispatch({
         type: LOG_IN_FAIL,
-        error: err.response
+        error: err.response.data.error
       })
     })
 }
@@ -34,7 +33,7 @@ export const login = (user) => dispatch => {
 export const signup = (user) => dispatch => {
   dispatch({
     type: SIGNING_UP
-  })
+  });
   axios.post('http://localhost:6161/auth/sign-up', user)
     .then(res => {
       dispatch({
@@ -44,15 +43,17 @@ export const signup = (user) => dispatch => {
       })
     })
     .catch(err => {
+      console.log(err)
       dispatch({
         type:  SIGN_UP_FAIL,
-        error: err.response
+        error: err.response.data.error
       })
-    })
+    });
 }
 
 
 export const logout = (user) => dispatch => {
+  console.log('You Are Logging out! Yes I know this is here...')
   dispatch({
     type: LOG_OUT
   })
