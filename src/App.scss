@@ -1,0 +1,9 @@
+// css reset and vars
+@import './globalSass/_reset.scss';
+@import './globalSass/_variables.scss';
+
+.app{
+  min-height: calc(100vh - 48px);
+  padding-top: 48px;
+}
+
