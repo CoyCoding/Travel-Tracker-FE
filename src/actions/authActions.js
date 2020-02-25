@@ -8,7 +8,7 @@ export const SIGNING_UP = "SIGNING_UP";
 export const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS";
 export const SIGN_UP_FAIL = "SIGN_UP_FAIL";
 
-export const LOG_OUT = "LOG_OUT_SUCCESS";
+export const LOG_OUT = "LOG_OUT";
 
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
