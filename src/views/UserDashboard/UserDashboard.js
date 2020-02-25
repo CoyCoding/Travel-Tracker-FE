@@ -1,17 +1,21 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getUserInfo } from '../../actions/userActions';
+import './UserDashboard.scss';
 
 const UserDashboard = (props) => {
   useEffect(()=>{
-    console.log(props.user)
     props.getUserInfo();
-  }, []);
+    console.log(props.user)
+  },[]);
   console.log(props)
   return (
-    <>
-      <p>Is this user logged in?</p>
-    </>
+    <div className="user-dash">
+      <div className="sidebar">
+      </div>
+      <div className="map platformed">
+      </div>
+    </div>
   )
 }
 

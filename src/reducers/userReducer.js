@@ -21,7 +21,7 @@ const userReducer = (state = initialState, action) => {
     case GET_USER_INFO_SUCCESS:
       return{
         ...state,
-        user: action.info,
+        info: action.info,
         gettingUserInfo: false,
       }
     case GET_USER_INFO_FAIL:

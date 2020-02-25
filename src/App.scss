@@ -2,8 +2,18 @@
 @import './globalSass/_reset.scss';
 @import './globalSass/_variables.scss';
 
-.app{
-  min-height: calc(100vh - 48px);
-  padding-top: 48px;
+html{
+  height: 100%;
+  body{
+    height: inherit;
+    #root{
+      height: inherit;
+      .app{
+        height: inherit;
+        padding-top: $navbar-height;
+      }
+    }
+  }
 }
+
 

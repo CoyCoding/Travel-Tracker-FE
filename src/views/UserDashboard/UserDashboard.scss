@@ -1,0 +1,22 @@
+.user-dash{
+  height: inherit;
+  display: flex;
+  .sidebar{
+    height: inherit;
+    background: white;
+    width: 200px;
+  }
+  .map{
+    flex: 1;
+    background: darkred;
+    border-top-left-radius: 20px;
+  }
+  .platformed{
+    background: #ececec;
+    border-top-left-radius: 20px;
+    box-shadow: #ffffffc7 -10px -10px 16px 0px, #c2cfde 0px 0px 19px 0px, #b7b1b173 10px 10px 10px 10px;
+    z-index: 1;
+    margin: 50px;
+    border-radius: 20px;
+  }
+}
