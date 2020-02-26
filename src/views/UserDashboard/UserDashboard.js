@@ -19,7 +19,7 @@ const UserDashboard = (props) => {
       <div className="sidebar">
       </div>
       <div className="map platformed">
-        <Map/>
+        <Map />
       </div>
     </div>
   )
