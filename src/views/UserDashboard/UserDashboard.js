@@ -8,7 +8,7 @@ const UserDashboard = (props) => {
   const useEffectOnce = (fn) => useEffect(fn, []);
 
   useEffectOnce(()=>{
-    if(!props.user){
+    if(!props.user.info){
       props.getUserInfo();
     }
   });

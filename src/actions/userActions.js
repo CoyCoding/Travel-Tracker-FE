@@ -20,7 +20,6 @@ export const getUserInfo = () => dispatch => {
       });
     })
     .catch((err) => {
-      console.log(err.response.data);
       dispatch({
         type: GET_USER_INFO_FAIL,
         error: err.response.data.error.message || 'Api Down',

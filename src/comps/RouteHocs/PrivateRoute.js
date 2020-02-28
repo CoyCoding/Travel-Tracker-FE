@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 
 const PrivateRoute = ({ component: Component, auth, ...rest }) =>  (
     <Route {...rest} render={ (props) => {
-      console.log(rest)
         if (auth.attemptingLogIn ){
           return <h1>Loading...</h1>;
         } else if (!auth.isLoggedIn){

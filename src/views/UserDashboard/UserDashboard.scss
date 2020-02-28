@@ -38,5 +38,8 @@
     .mapboxgl-marker {
       width: 16px;
     }
+    .mapboxgl-popup-content{
+      cursor: default;
+    }
   }
 }
