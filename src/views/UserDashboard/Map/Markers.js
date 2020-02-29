@@ -6,7 +6,7 @@ import MarkerWrapper from './MarkerWrapper';
 
 function Markers(props) {
   const [showPopup, setShowPopup] = useState({});
-  const user = props.user.info;
+  const user = props.user;
 
   const togglePopUp = (id, state) => {
     setShowPopup({
@@ -31,22 +31,10 @@ function Markers(props) {
       )
   });
 }
+
   return (
     <>
-    {(() => {
-      if (user) {
-        return (
-          <>
-          {renderMarkersFor(user)}
-          <>test</>
-          </>
-        )
-      } else {
-        return (
-          null
-        )
-      }
-    })()}
+      {user.locations.length > 0 ? renderMarkersFor(user) : null}
     </>
   );
 }

@@ -5,7 +5,10 @@ import {
   CLEAR_USER_ERRORS,
 } from '../actions/userActions';
 
+import buildLocationArray from '../utils/locationsBuilder';
+
 const initialState = {
+    locations: [],
     info: undefined,
     gettingUserInfo: false,
     error: undefined,
@@ -21,6 +24,7 @@ const userReducer = (state = initialState, action) => {
     case GET_USER_INFO_SUCCESS:
       return{
         ...state,
+        locations: buildLocationArray(action.info),
         info: action.info,
         gettingUserInfo: false,
       }

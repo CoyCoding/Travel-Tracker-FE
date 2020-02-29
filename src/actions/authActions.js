@@ -21,7 +21,7 @@ export const login = (user) => dispatch => {
     .then(res => {
       dispatch({
         type: GET_USER_INFO_SUCCESS,
-        info: res.data
+        info: res.data,
       })
       dispatch({
         type: LOG_IN_SUCCESS,
