@@ -11,10 +11,10 @@ function Map() {
     height: '100%',
     latitude: 38.7577,
     longitude: -90.4376,
-    zoom: 8
+    zoom: 2
   });
   return (
-    <ReactMapGL mapboxApiAccessToken={TOKEN} {...viewport} onViewportChange={setViewport} mapStyle={ 'mapbox://styles/mapbox/streets-v11'}>
+    <ReactMapGL mapboxApiAccessToken={TOKEN} {...viewport} onViewportChange={setViewport} mapStyle={ 'mapbox://styles/fluffytoycoy/ck76ur81x5esc1ink2fr223wd'}>
       <Markers/>
     </ReactMapGL>
   );

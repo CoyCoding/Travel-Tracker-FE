@@ -13,7 +13,9 @@ const Home = (props) => {
   }, [props.match.path])
 
   const formShouldRender = () => {
-    props.clearErrors();
+    if(props.error){
+      props.clearErrors();
+    }
     return formSelection === '/SignUp' ? true : false;
   }
 

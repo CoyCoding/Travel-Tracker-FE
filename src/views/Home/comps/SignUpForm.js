@@ -35,7 +35,7 @@ const SignUpForm = (props) => {
     <div>
       <h1>Signup</h1>
       <ErrorText error={props.auth.error}/>
-      <FormWrapper submit={submit}/>
+      <FormWrapper submit={submit} attemptingLogIn={props.auth.attemptingLogIn}/>
       <p>Have an account <span onClick={()=>{props.push('/LogIn')}}>Log in</span></p>
     </div>
   )
@@ -55,7 +55,7 @@ const FormWrapper = (props) => {
           {errors.email && touched.email ? <div>{errors.email}</div> : null}
           <Field name="password" placeholder="password"/>
           {errors.password && touched.password ? <div>{errors.password}</div> : null}
-          <button type="submit" disabled={props.auth.attemptingLogIn}>Submit</button>
+          <button type="submit" disabled={props.attemptingLogIn}>Submit</button>
         </Form>
       )}
     </Formik>

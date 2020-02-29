@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const LOGGING_IN = "LOG_IN_ATTEMPT";
 export const LOG_IN_SUCCESS = "LOG_IN_SUCCESS";
+export const GET_USER_INFO_SUCCESS = "GET_CURRENT_USER_SUCCESS";
 export const LOG_IN_FAIL = "LOG_IN_FAIL";
 
 export const SIGNING_UP = "SIGNING_UP";
@@ -19,11 +20,14 @@ export const login = (user) => dispatch => {
   axios.post('/auth/login', user)
     .then(res => {
       dispatch({
+        type: GET_USER_INFO_SUCCESS,
+        info: res.data
+      })
+      dispatch({
         type: LOG_IN_SUCCESS,
-        payload: res.data,
         token: res.headers['access-token'],
       })
-    })
+    }).then()
     .catch(err => {
       dispatch({
         type: LOG_IN_FAIL,
