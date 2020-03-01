@@ -4,6 +4,9 @@ import {
   GET_USER_INFO_FAIL,
   CLEAR_USER_ERRORS,
 } from '../actions/userActions';
+import {
+  ADD_LOCATION
+} from '../actions/locationActions';
 
 import buildLocationArray from '../utils/locationsBuilder';
 

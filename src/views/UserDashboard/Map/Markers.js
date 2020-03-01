@@ -29,8 +29,8 @@ function Markers(props) {
         placement={placement}
         username={user.username}/>
       )
-  });
-}
+    });
+  }
 
   return (
     <>
