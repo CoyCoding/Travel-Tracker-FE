@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import {Marker, Popup} from 'react-map-gl';
-import LocationIcon from './data/LocationIcon';
 import MarkerWrapper from './MarkerWrapper';
 
-function Markers(props) {
+function AllLocations(props) {
   const [showPopup, setShowPopup] = useState({});
   const user = props.user;
 
@@ -42,4 +40,4 @@ function Markers(props) {
 const mapStateToProps = state => ({ user: state.user})
 export default connect(
     mapStateToProps
-)(Markers);
+)(AllLocations);

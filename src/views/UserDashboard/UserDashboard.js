@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Map from './Map/Map';
+import MarkerForm from './MarkerForm/MarkerForm';
 import { connect } from 'react-redux';
 import { getUserInfo } from '../../actions/userActions';
 import { addLocation } from '../../actions/locationActions';
@@ -14,11 +15,6 @@ const UserDashboard = (props) => {
     }
   });
 
-  const testClick = () => {
-    props.addLocation();
-  }
-
-  console.log(props)
   return (
     <div className="user-dash">
       <div className="sidebar">
@@ -33,6 +29,7 @@ const UserDashboard = (props) => {
         <div onClick={props.addLocation}>
           add new location
         </div>
+        <MarkerForm/>
       </div>
     </div>
   )

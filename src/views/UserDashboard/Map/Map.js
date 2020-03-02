@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import ReactMapGL, {Marker, Popup} from 'react-map-gl';
-import LocationIcon from './data/LocationIcon';
-import Markers from './Markers';
-import AddingMarker from './AddingMarker';
+import ReactMapGL from 'react-map-gl';
+import { connect } from 'react-redux';
+import AllLocations from './AllLocations/AllLocations';
+import AddLocation from './AddLocation/AddLocation';
 
-const TOKEN = '';
 
-function Map() {
+const TOKEN = 'p';
+
+function Map(props) {
   const [viewport, setViewport] = useState({
     width: '100%',
     height: '100%',
@@ -19,12 +20,18 @@ function Map() {
     setViewport(viewport)
   }
 
+  const initLocation = {
+     latitude: viewport.latitude, longitude: viewport.longitude
+  }
 
   return (
     <ReactMapGL mapboxApiAccessToken={TOKEN} {...viewport} onViewportChange={_onViewportChange} mapStyle={ 'mapbox://styles/fluffytoycoy/ck76ur81x5esc1ink2fr223wd'}>
-      <AddingMarker startingPos={{latitude: viewport.latitude, longitude: viewport.longitude}}/>
+      {props.location.movingMarker ? <AddLocation startingPos={initLocation} /> : <AllLocations />}
     </ReactMapGL>
   );
 }
 
-export default Map;
+const mapStateToProps = state => ({ location: state.location})
+export default connect(
+    mapStateToProps,
+)(Map);
