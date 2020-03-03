@@ -3,30 +3,19 @@ import ReactMapGL from 'react-map-gl';
 import { connect } from 'react-redux';
 import AllLocations from './AllLocations/AllLocations';
 import AddLocation from './AddLocation/AddLocation';
+import { moveViewport } from '../../../actions/locationActions';
 
 
-const TOKEN = 'p';
+const TOKEN = 
 
 function Map(props) {
-  const [viewport, setViewport] = useState({
-    width: '100%',
-    height: '100%',
-    latitude: 38.7577,
-    longitude: -90.4376,
-    zoom: 2
-  });
-
   const _onViewportChange = (viewport) => {
-    setViewport(viewport)
-  }
-
-  const initLocation = {
-     latitude: viewport.latitude, longitude: viewport.longitude
+    props.moveViewport(viewport)
   }
 
   return (
-    <ReactMapGL mapboxApiAccessToken={TOKEN} {...viewport} onViewportChange={_onViewportChange} mapStyle={ 'mapbox://styles/fluffytoycoy/ck76ur81x5esc1ink2fr223wd'}>
-      {props.location.movingMarker ? <AddLocation startingPos={initLocation} /> : <AllLocations />}
+    <ReactMapGL mapboxApiAccessToken={TOKEN} {...props.location.viewport} onViewportChange={_onViewportChange} mapStyle={ 'mapbox://styles/fluffytoycoy/ck76ur81x5esc1ink2fr223wd'}>
+      {props.location.movingMarker ? <AddLocation /> : <AllLocations />}
     </ReactMapGL>
   );
 }
@@ -34,4 +23,5 @@ function Map(props) {
 const mapStateToProps = state => ({ location: state.location})
 export default connect(
     mapStateToProps,
+    { moveViewport }
 )(Map);
