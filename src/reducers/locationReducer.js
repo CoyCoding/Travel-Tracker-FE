@@ -7,7 +7,7 @@ import {
 const initialState = {
     movingMarker: false,
     firstMove: false,
-    location: {title: "", latitude: 0, longitude: 0},
+    location: {title: '', latitude: 0, longitude: 0},
     viewport: {
       width: '100%',
       height: '100%',
@@ -20,6 +20,7 @@ const initialState = {
 const userReducer = (state = initialState, action) => {
   switch (action.type){
     case MOVE_LOCATION:
+    console.log(state)
       return{
         ...state,
         location: { ...state.location, ...action.location},
@@ -29,7 +30,7 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         movingMarker: true,
-        location: {latitude: state.viewport.latitude, longitude: state.viewport.longitude}
+        location: {...state.location, latitude: state.viewport.latitude, longitude: state.viewport.longitude}
       }
     case MOVE_VIEWPORT:
       return {
