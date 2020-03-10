@@ -3,7 +3,7 @@ import Map from './Map/Map';
 import MarkerForm from './MarkerForm/MarkerForm';
 import { connect } from 'react-redux';
 import { getUserInfo } from '../../store/actions/userActions';
-import { addLocation } from '../../store/actions/locationActions';
+import { addMarker } from '../../store/actions/locationActions';
 import './UserDashboard.scss';
 
 const UserDashboard = (props) => {
@@ -26,11 +26,8 @@ const UserDashboard = (props) => {
         <Map />
       </div>
       <div className="sidebar">
-        <div onClick={props.addLocation}>
+        <div onClick={props.addMarker}>
           add new location
-        </div>
-        <div onClick={localStorage.setItem('access-token', null)}>
-          void token
         </div>
         <MarkerForm/>
       </div>
@@ -41,5 +38,5 @@ const UserDashboard = (props) => {
 const mapStateToProps = state => ({ user: state.user})
 export default connect(
     mapStateToProps,
-    { getUserInfo, addLocation }
+    { getUserInfo, addMarker }
 )(UserDashboard);

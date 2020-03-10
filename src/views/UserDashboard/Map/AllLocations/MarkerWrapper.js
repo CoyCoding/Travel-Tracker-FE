@@ -14,7 +14,7 @@ const MarkerWrapper = (props) => {
   return (
     <>
     <Marker key={props.location._id} {...props.placement} offsetLeft={-8} offsetTop={-8} >
-      <LocationIcon onClick={()=> props.togglePopUp(props.location._id, true)}/>
+      <LocationIcon className={'stationary'} onClick={()=> props.togglePopUp(props.location._id, true)}/>
     </Marker>
     {props.showPopup[ props.location._id] && <Popup
     {...popupSettings}

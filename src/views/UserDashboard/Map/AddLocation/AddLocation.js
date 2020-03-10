@@ -49,7 +49,7 @@ function AddLocation(props) {
       {...position}
       offsetLeft={-8}
       offsetTop={-8} >
-          <LocationIcon />
+          <LocationIcon className={'moveable'}/>
       </Marker>
     </>
   );

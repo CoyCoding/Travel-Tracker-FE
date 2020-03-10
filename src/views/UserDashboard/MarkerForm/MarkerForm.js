@@ -6,8 +6,8 @@ import { moveLocation } from '../../../store/actions/locationActions';
 
 const MarkerForm = (props) => {
 
-  const submit = (user) => {
-    props.signup(user)
+  const submit = (values) => {
+    props.addLocation(values);
   }
 
   const updateMarkerState = (location) => {
@@ -30,5 +30,5 @@ const mapStateToProps = state => ({location: state.location, user_id: state.user
 
 export default connect(
     mapStateToProps,
-    { moveLocation }
+    { moveLocation, addLocation }
 )(MarkerForm);

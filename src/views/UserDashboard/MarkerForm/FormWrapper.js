@@ -9,16 +9,15 @@ const MIN_LONG = -180;
 const schema = Yup.object().shape({
   title: Yup.string()
     .required('Required'),
-  longitude: Yup.number('not a number')
+  longitude: Yup.number()
     .required('Required')
-    .min(MIN_LONG).max(MAX_LONG)
-    .typeError('you must specify a number'),
+    .min(MIN_LONG, 'The min for longitude is -180').max(MAX_LONG, 'The max for longitude is 180')
+    .typeError('This is not a vaild number'),
   latitude: Yup.number()
     .required('Required')
-    .min(MIN_LAT).max(MAX_LAT)
-    .typeError('you must specify a number'),
+    .min(MIN_LAT, 'The min for latitude is -90').max(MAX_LAT, 'The max for latitude is 90')
+    .typeError('This is not a valid number'),
 });
-
 
 const FormWrapper = (props) => {
   const [formLocation, setformLocation] = useState(props.markerValues);
@@ -39,20 +38,28 @@ const FormWrapper = (props) => {
     Yup.reach(schema, target.name).validate(target.value).then(()=>{
       setErrors({...errors,  [target.name]: undefined})
       if(target.name === 'longitude' || target.name === 'latitude'){
-        console.log(target.value)
         props.updateMarkerState({[target.name]: Number(target.value)})
       } else{
         props.updateMarkerState({[target.name]: target.value})
       }
     }).catch((err) => {
-      console.log(err)
       setErrors({...errors, [target.name]: err.message})
     });
   }
-  console.log(formLocation.title)
+
+  const submitForm = (e) => {
+    e.preventDefault();
+    schema.validate(formLocation).then(()=>{
+      props.submit(formLocation)
+    }).catch((err)=>{
+      console.log(err)
+    })
+
+  }
+
   return(
     <form
-      onSubmit={(values)=> console.log(values)}>
+      onSubmit={(e) => {submitForm(e)}}>
           {touched.title && errors.title ? <div>{errors.title}</div> : null}
           <input
             name="title"

@@ -1,12 +1,16 @@
 import {
   MOVE_LOCATION,
-  NEW_LOCATION,
+  ADD_MARKER,
   MOVE_VIEWPORT,
+  ADDING_LOCATION,
+  ADD_LOCATION_SUCCESS,
+  ADD_LOCATION_FAIL,
 } from '../actions/locationActions';
 
 const initialState = {
     movingMarker: false,
     firstMove: false,
+    attemptingAddLocation: false,
     location: {title: '', latitude: 0, longitude: 0},
     viewport: {
       width: '100%',
@@ -17,16 +21,15 @@ const initialState = {
     }
 }
 
-const userReducer = (state = initialState, action) => {
+const locationReducer = (state = initialState, action) => {
   switch (action.type){
     case MOVE_LOCATION:
-    console.log(state)
       return{
         ...state,
         location: { ...state.location, ...action.location},
         creatingNewMarker: false
       }
-    case NEW_LOCATION:
+    case ADD_MARKER:
       return {
         ...state,
         movingMarker: true,
@@ -37,9 +40,26 @@ const userReducer = (state = initialState, action) => {
         ...state,
         viewport: action.viewport
       }
+    case ADDING_LOCATION:
+      return{
+        ...state,
+        attemptingAddLocation: true,
+      }
+    case ADD_LOCATION_SUCCESS:
+      return{
+        ...state,
+        movingMarker: false,
+        attemptingAddLocation: false,
+      }
+    case ADD_LOCATION_FAIL:
+    return {
+        ...state,
+        error: action.error.message,
+        attemptingAddLocation: false
+    }
     default:
       return state
   }
 }
 
-export default userReducer;
+export default locationReducer;

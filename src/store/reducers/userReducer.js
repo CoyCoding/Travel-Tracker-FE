@@ -5,7 +5,7 @@ import {
   CLEAR_USER_ERRORS,
 } from '../actions/userActions';
 import {
-  ADD_LOCATION
+  ADD_LOCATION_SUCCESS
 } from '../actions/locationActions';
 
 import buildLocationArray from './utils/locationsBuilder';
@@ -41,6 +41,11 @@ const userReducer = (state = initialState, action) => {
       return{
         ...state,
         error: undefined,
+      }
+    case ADD_LOCATION_SUCCESS:
+      return{
+        ...state,
+        locations: [...state.locations, action.location]
       }
     default:
       return state

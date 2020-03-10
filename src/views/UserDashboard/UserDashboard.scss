@@ -4,23 +4,17 @@
   background: #ececec;
   .sidebar{
     width: 300px;
-    box-shadow: inset #c2cfde -3px 0px 5px 0px, inset #b7b1b173 0px 0px 5px 2px, #ffffff 0px 0px 7px 2px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    margin: 50px 0;
+    box-shadow: #c2cfde 0px 0px 10px 2px;
+    z-index: 2;
   }
   .map{
     flex: 1;
     background: darkred;
-    border-top-left-radius: 20px;
+    z-index: 0;
   }
   .platformed{
     background: #ececec;
-    border-top-left-radius: 20px;
-    box-shadow: #ffffffc7 0px 0px 3px 4px, inset #c2cfde 0px 0px 4px 2px, inset #b7b1b173 3px 3px 3px 0px;
     z-index: 1;
-    margin: 50px;
-    border-radius: 20px;
     position: relative;
     overflow: hidden;
     .mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-bottom-right{
@@ -37,8 +31,12 @@
     }
     .mapboxgl-marker {
       width: 16px;
+      > .stationary {
+        cursor: pointer;
+      }
     }
-    .mapboxgl-popup-content{
+    .mapboxgl-popup{
+      z-index: 4;
       cursor: default;
     }
   }
