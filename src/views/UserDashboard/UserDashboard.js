@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import Map from './Map/Map';
 import MarkerForm from './MarkerForm/MarkerForm';
 import { connect } from 'react-redux';
-import { getUserInfo } from '../../actions/userActions';
-import { addLocation } from '../../actions/locationActions';
+import { getUserInfo } from '../../store/actions/userActions';
+import { addLocation } from '../../store/actions/locationActions';
 import './UserDashboard.scss';
 
 const UserDashboard = (props) => {
@@ -28,6 +28,9 @@ const UserDashboard = (props) => {
       <div className="sidebar">
         <div onClick={props.addLocation}>
           add new location
+        </div>
+        <div onClick={localStorage.setItem('access-token', null)}>
+          void token
         </div>
         <MarkerForm/>
       </div>

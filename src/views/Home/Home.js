@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import LogInForm from './comps/LogInForm';
 import SignUpForm from './comps/SignUpForm';
 import { connect } from 'react-redux';
-import { clearErrors } from '../../actions/authActions';
+import { clearErrors } from '../../store/actions/authActions';
 import './Home.scss'
 
 const Home = (props) => {

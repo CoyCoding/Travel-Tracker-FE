@@ -8,7 +8,7 @@ import {
   ADD_LOCATION
 } from '../actions/locationActions';
 
-import buildLocationArray from '../utils/locationsBuilder';
+import buildLocationArray from './utils/locationsBuilder';
 
 const initialState = {
     locations: [],

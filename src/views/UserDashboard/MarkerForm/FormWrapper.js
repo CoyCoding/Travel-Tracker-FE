@@ -21,7 +21,6 @@ const schema = Yup.object().shape({
 
 
 const FormWrapper = (props) => {
-  const [statelocation, setStateLocation] = useState(props.markerValues);
   const [formLocation, setformLocation] = useState(props.markerValues);
   const [touched, setTouched] = useState({latitude: false, longitude: false, title: false});
   const [errors, setErrors] = useState({});
@@ -36,7 +35,7 @@ const FormWrapper = (props) => {
     // Set that input has been touched
     setTouched({...touched, [target.name]: true});
     setformLocation({...formLocation, [target.name]: target.value});
-    // Check the validation 
+    // Check the validation
     Yup.reach(schema, target.name).validate(target.value).then(()=>{
       setErrors({...errors,  [target.name]: undefined})
       if(target.name === 'longitude' || target.name === 'latitude'){

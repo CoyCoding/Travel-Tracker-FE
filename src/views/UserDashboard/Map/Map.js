@@ -3,10 +3,10 @@ import ReactMapGL from 'react-map-gl';
 import { connect } from 'react-redux';
 import AllLocations from './AllLocations/AllLocations';
 import AddLocation from './AddLocation/AddLocation';
-import { moveViewport } from '../../../actions/locationActions';
+import { moveViewport } from '../../../store/actions/locationActions';
 
 
-const TOKEN = 
+const TOKEN = ;
 
 function Map(props) {
   const _onViewportChange = (viewport) => {

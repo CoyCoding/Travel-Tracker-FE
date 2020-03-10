@@ -3,7 +3,7 @@ import ErrorText from './ErrorText';
 import { connect } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import { login } from '../../../actions/authActions';
+import { login } from '../../../store/actions/authActions';
 
 const SignupSchema = Yup.object().shape({
   email: Yup.string()

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import {Marker} from 'react-map-gl';
 import LocationIcon from '../data/LocationIcon';
-import { moveLocation } from '../../../../actions/locationActions';
+import { moveLocation } from '../../../../store/actions/locationActions';
 
 function AddLocation(props) {
   const [position, setPosition] = useState(props.location.location);

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import FormWrapper from './FormWrapper';
-import { addLocation } from '../../../actions/locationActions';
-import { moveLocation } from '../../../actions/locationActions';
+import { addLocation } from '../../../store/actions/locationActions';
+import { moveLocation } from '../../../store/actions/locationActions';
 
 const MarkerForm = (props) => {
 
