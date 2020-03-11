@@ -7,6 +7,10 @@ import {
   ADD_LOCATION_FAIL,
 } from '../actions/locationActions';
 
+import {
+  LOG_OUT
+} from '../actions/authActions';
+
 const initialState = {
     movingMarker: false,
     firstMove: false,
@@ -38,7 +42,7 @@ const locationReducer = (state = initialState, action) => {
     case MOVE_VIEWPORT:
       return {
         ...state,
-        viewport: action.viewport
+        viewport: {...action.viewport, width: '100%', height: '100%' }
       }
     case ADDING_LOCATION:
       return{
@@ -57,6 +61,10 @@ const locationReducer = (state = initialState, action) => {
         error: action.error.message,
         attemptingAddLocation: false
     }
+    case LOG_OUT:
+      return{
+        state: initialState
+      }
     default:
       return state
   }

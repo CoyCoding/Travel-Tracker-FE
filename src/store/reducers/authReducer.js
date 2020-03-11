@@ -13,7 +13,8 @@ const initialState = {
     accessToken: localStorage.getItem('access-token'),
     isLoggedIn: !!localStorage.getItem('access-token'),
     error: undefined,
-    attemptingLogIn: false
+    attemptingLogIn: false,
+    userId: undefined,
 }
 
 const authReducer = (state = initialState, action) => {
@@ -26,11 +27,13 @@ const authReducer = (state = initialState, action) => {
           }
         case LOG_IN_SUCCESS:
           localStorage.setItem('access-token', action.token)
+          console.log(action.info)
           return {
               ...state,
               isLoggedIn: true,
               attemptingLogIn: false,
               accessToken: localStorage.getItem('access-token'),
+              userId: action.info._id
           }
         case LOG_IN_FAIL:
           return {
@@ -63,8 +66,7 @@ const authReducer = (state = initialState, action) => {
         case LOG_OUT:
           localStorage.removeItem('access-token');
           return{
-              ...state,
-              isLoggedIn: false,
+              state: initialState
           }
         case CLEAR_ERRORS:
         console.log('clear errors')

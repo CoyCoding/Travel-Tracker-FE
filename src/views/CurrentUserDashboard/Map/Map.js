@@ -6,7 +6,7 @@ import AddLocation from './AddLocation/AddLocation';
 import { moveViewport } from '../../../store/actions/locationActions';
 
 
-const TOKEN = 'pk.eyJ1IjoiZmx1ZmZ5dG95Y295IiwiYSI6ImNrNzIwcWd0MjBiOXczb253OWpneXJpb2kifQ.WsxTXH54_UnRveYVwN6gNQ';
+const TOKEN = ;
 
 function Map(props) {
   const _onViewportChange = (viewport) => {

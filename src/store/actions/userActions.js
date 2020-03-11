@@ -25,7 +25,6 @@ export const getUserInfo = () => dispatch => {
   dispatch({
     type: GETTING_CURRENT_USER
   });
-  console.log(authHeaders)
   axios.get('/api/locations', authHeaders)
     .then((res) => {
       console.log(res)

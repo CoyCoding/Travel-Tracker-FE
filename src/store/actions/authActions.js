@@ -26,6 +26,7 @@ export const login = (user) => dispatch => {
       dispatch({
         type: LOG_IN_SUCCESS,
         token: res.headers['access-token'],
+        info: res.data,
       })
     }).then()
     .catch(err => {
@@ -50,7 +51,7 @@ export const signup = (user) => dispatch => {
     .then(res => {
       dispatch({
         type: SIGN_UP_SUCCESS,
-        payload: res.data,
+        info: res.data,
         token: res.headers['access-token'],
       })
     })

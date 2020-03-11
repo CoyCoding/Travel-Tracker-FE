@@ -3,6 +3,7 @@ import { Router, Route, Switch } from 'react-router-dom';
 import history from './utils/history.js';
 import Home from './views/Home/Home';
 import NotFound from './views/NotFound/NotFound';
+import CurrentUserDashboard from './views/CurrentUserDashboard/CurrentUserDashboard';
 import UserDashboard from './views/UserDashboard/UserDashboard';
 import NavBar from './comps/NavBar/NavBar';
 import PrivateRoute from './comps/RouteHocs/PrivateRoute';
@@ -18,7 +19,8 @@ const App = () => {
           <PublicRoute path='/' exact component={Home}/>
           <PublicRoute path='/LogIn' exact component={Home}/>
           <PublicRoute path='/SignUp' exact component={Home}/>
-          <PrivateRoute path='/home' exact component={UserDashboard}/>
+          <PrivateRoute path='/Home' exact component={UserDashboard}/>
+          <PrivateRoute path='/u/:username' component={UserDashboard}/>
           <Route component={NotFound}/>
         </Switch>
       </div>

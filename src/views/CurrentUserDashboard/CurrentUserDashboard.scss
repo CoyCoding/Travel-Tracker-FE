@@ -1,0 +1,43 @@
+.user-dash{
+  height: inherit;
+  display: flex;
+  background: #ececec;
+  .sidebar{
+    width: 300px;
+    box-shadow: #c2cfde 0px 0px 10px 2px;
+    z-index: 2;
+  }
+  .map{
+    flex: 1;
+    background: darkred;
+    z-index: 0;
+  }
+  .platformed{
+    background: #ececec;
+    z-index: 1;
+    position: relative;
+    overflow: hidden;
+    .mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-bottom-right{
+      display: none;
+    }
+    .tooltip{
+      position: absolute;
+      border-radius: 5px;
+      background: #000000bd;
+      color: #d0d0d0;
+      margin-left: 10px;
+      display: flex;
+      padding: 10px;
+    }
+    .mapboxgl-marker {
+      width: 16px;
+      > .stationary {
+        cursor: pointer;
+      }
+    }
+    .mapboxgl-popup{
+      z-index: 4;
+      cursor: default;
+    }
+  }
+}

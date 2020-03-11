@@ -4,9 +4,14 @@ import {
   GET_USER_INFO_FAIL,
   CLEAR_USER_ERRORS,
 } from '../actions/userActions';
+
 import {
   ADD_LOCATION_SUCCESS
 } from '../actions/locationActions';
+
+import {
+  LOG_OUT
+} from '../actions/authActions';
 
 import buildLocationArray from './utils/locationsBuilder';
 
@@ -37,15 +42,22 @@ const userReducer = (state = initialState, action) => {
         error: action.error.message,
         gettingUserInfo: false,
       }
+
+    case ADD_LOCATION_SUCCESS:
+      return{
+        ...state,
+        locations: [...state.locations, action.location]
+      }
+
     case CLEAR_USER_ERRORS:
       return{
         ...state,
         error: undefined,
       }
-    case ADD_LOCATION_SUCCESS:
+
+    case LOG_OUT:
       return{
-        ...state,
-        locations: [...state.locations, action.location]
+        state: initialState
       }
     default:
       return state

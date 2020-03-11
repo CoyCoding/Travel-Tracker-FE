@@ -4,9 +4,10 @@ import MarkerForm from './MarkerForm/MarkerForm';
 import { connect } from 'react-redux';
 import { getUserInfo } from '../../store/actions/userActions';
 import { addMarker } from '../../store/actions/locationActions';
-import './UserDashboard.scss';
+import './CurrentUserDashboard.scss';
 
-const UserDashboard = (props) => {
+const CurrentUserDashboard = (props) => {
+
   const getCurrentUserInfo = () =>{
     if(!props.user.info){
       props.getUserInfo();
@@ -18,9 +19,7 @@ const UserDashboard = (props) => {
     getCurrentUserInfo();
     if(username){
       username = username.replace(/_/gi, " ");
-      if(username.toLowerCase() === props.info.username.toLocaleLowerCase()){
-        console.log(username)
-      }
+      console.log(username)
     }
   }, [])
 
@@ -48,4 +47,4 @@ const mapStateToProps = state => ({ user: state.user})
 export default connect(
     mapStateToProps,
     { getUserInfo, addMarker }
-)(UserDashboard);
+)(CurrentUserDashboard);
