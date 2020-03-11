@@ -63,7 +63,7 @@ const locationReducer = (state = initialState, action) => {
     }
     case LOG_OUT:
       return{
-        state: initialState
+        ...initialState
       }
     default:
       return state

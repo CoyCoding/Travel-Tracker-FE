@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import MarkerWrapper from './MarkerWrapper';
 
-function AllLocations(props) {
+function UserLocations(props) {
   const [showPopup, setShowPopup] = useState({});
   const user = props.user;
 
@@ -40,4 +40,4 @@ function AllLocations(props) {
 const mapStateToProps = state => ({ user: state.user})
 export default connect(
     mapStateToProps
-)(AllLocations);
+)(UserLocations);

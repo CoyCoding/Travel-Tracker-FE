@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import ReactMapGL from 'react-map-gl';
 import { connect } from 'react-redux';
-import AllLocations from './AllLocations/AllLocations';
-import AddLocation from './AddLocation/AddLocation';
 import { moveViewport } from '../../../store/actions/locationActions';
 
 
-const TOKEN = 'pk.eyJ1IjoiZmx1ZmZ5dG95Y295IiwiYSI6ImNrNzIwcWd0MjBiOXczb253OWpneXJpb2kifQ.WsxTXH54_UnRveYVwN6gNQ';
+const TOKEN = ;
 
 function Map(props) {
   const _onViewportChange = (viewport) => {
@@ -15,7 +13,7 @@ function Map(props) {
 
   return (
     <ReactMapGL mapboxApiAccessToken={TOKEN} {...props.location.viewport} onViewportChange={_onViewportChange} mapStyle={ 'mapbox://styles/fluffytoycoy/ck76ur81x5esc1ink2fr223wd'}>
-      {props.location.movingMarker ? <AddLocation /> : <AllLocations />}
+      {props.children}
     </ReactMapGL>
   );
 }

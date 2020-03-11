@@ -1,8 +1,11 @@
 import {
   GETTING_CURRENT_USER,
+  GET_CURRENT_USER_INFO_SUCCESS,
+  GET_CURRENT_USER_INFO_FAIL,
+  CLEAR_USER_ERRORS,
+  GETTING_USER_INFO,
   GET_USER_INFO_SUCCESS,
   GET_USER_INFO_FAIL,
-  CLEAR_USER_ERRORS,
 } from '../actions/userActions';
 
 import {
@@ -16,6 +19,7 @@ import {
 import buildLocationArray from './utils/locationsBuilder';
 
 const initialState = {
+    selectedUser: undefined,
     locations: [],
     info: undefined,
     gettingUserInfo: false,
@@ -29,14 +33,14 @@ const userReducer = (state = initialState, action) => {
         ...state,
         gettingUserInfo: true,
       }
-    case GET_USER_INFO_SUCCESS:
+    case GET_CURRENT_USER_INFO_SUCCESS:
       return{
         ...state,
         locations: buildLocationArray(action.info),
         info: action.info,
         gettingUserInfo: false,
       }
-    case GET_USER_INFO_FAIL:
+    case GET_CURRENT_USER_INFO_FAIL:
       return{
         ...state,
         error: action.error.message,
@@ -49,6 +53,22 @@ const userReducer = (state = initialState, action) => {
         locations: [...state.locations, action.location]
       }
 
+    case   GETTING_USER_INFO:
+      return{
+        ...state,
+      }
+    case  GET_USER_INFO_SUCCESS:
+
+      return{
+        ...state,
+        selectedUser: action.selectedUser
+      }
+    case  GET_USER_INFO_FAIL:
+      return{
+        ...state,
+        error: action.error.message,
+      }
+
     case CLEAR_USER_ERRORS:
       return{
         ...state,
@@ -57,7 +77,7 @@ const userReducer = (state = initialState, action) => {
 
     case LOG_OUT:
       return{
-        state: initialState
+        ...initialState
       }
     default:
       return state

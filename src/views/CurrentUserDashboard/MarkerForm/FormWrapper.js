@@ -57,6 +57,8 @@ const FormWrapper = (props) => {
 
   }
 
+  console.log(props.markerValues)
+
   return(
     <form
       onSubmit={(e) => {submitForm(e)}}>

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import history from './utils/history.js';
+import { connect } from 'react-redux';
 import Home from './views/Home/Home';
 import NotFound from './views/NotFound/NotFound';
 import CurrentUserDashboard from './views/CurrentUserDashboard/CurrentUserDashboard';
@@ -8,9 +9,18 @@ import UserDashboard from './views/UserDashboard/UserDashboard';
 import NavBar from './comps/NavBar/NavBar';
 import PrivateRoute from './comps/RouteHocs/PrivateRoute';
 import PublicRoute from './comps/RouteHocs/PublicRoute';
+import { getCurrentUserInfo } from './store/actions/userActions';
 import './App.scss';
 
-const App = () => {
+const App = (props) => {
+
+  useEffect(()=>{
+    if(!props.user.info && props.auth.isLoggedIn){
+      console.log('here')
+      props.getCurrentUserInfo();
+    }
+  }, [props.auth.isLoggedIn])
+
   return (
     <Router history={history}>
       <NavBar/>
@@ -19,7 +29,7 @@ const App = () => {
           <PublicRoute path='/' exact component={Home}/>
           <PublicRoute path='/LogIn' exact component={Home}/>
           <PublicRoute path='/SignUp' exact component={Home}/>
-          <PrivateRoute path='/Home' exact component={UserDashboard}/>
+          <PrivateRoute path='/Home' exact component={CurrentUserDashboard}/>
           <PrivateRoute path='/u/:username' component={UserDashboard}/>
           <Route component={NotFound}/>
         </Switch>
@@ -28,4 +38,8 @@ const App = () => {
   );
 }
 
-export default App;
+const mapStateToProps = state => ({ user: state.user, auth: state.auth})
+export default connect(
+    mapStateToProps,
+    { getCurrentUserInfo }
+)(App);

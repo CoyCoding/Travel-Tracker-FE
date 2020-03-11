@@ -66,7 +66,7 @@ const authReducer = (state = initialState, action) => {
         case LOG_OUT:
           localStorage.removeItem('access-token');
           return{
-              state: initialState
+              initialState
           }
         case CLEAR_ERRORS:
         console.log('clear errors')
