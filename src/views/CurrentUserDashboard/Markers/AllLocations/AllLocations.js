@@ -14,6 +14,7 @@ function AllLocations(props) {
 
   const renderMarkersFor = (user) => {
     return user.locations.map((location, i) => {
+      console.log(user)
       const placement = {
         latitude: location.latitude,
         longitude: location.longitude
@@ -25,7 +26,7 @@ function AllLocations(props) {
         showPopup={showPopup}
         togglePopUp={togglePopUp}
         placement={placement}
-        username={user.username}/>
+        username={location.user}/>
       )
     });
   }

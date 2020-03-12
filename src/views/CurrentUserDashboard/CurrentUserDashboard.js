@@ -17,7 +17,7 @@ const CurrentUserDashboard = (props) => {
             </div>
             <div className="map platformed">
               <Map>
-                {props.location.movingMarker ? <AddLocation /> : <AllLocations />}
+                {props.location.movingMarker ? <AddLocation /> : <AllLocations currentUser={props.user.info}/>}
               </Map>
             </div>
             <div className="sidebar">

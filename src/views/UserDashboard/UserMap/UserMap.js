@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Map from '../../../comps/Map/Map';
+import LocationMarkerLayer from '../../../comps/Map/LocationMarkerLayer/LocationMarkerLayer';
 import { connect } from 'react-redux';
 import { getUserInfo } from '../../../store/actions/userActions';
 import { addMarker } from '../../../store/actions/locationActions';
 
-const MapWrapper = (props) => {
+const UserMap = (props) => {
 
   useEffect(()=>{
     const usernameParam = props.match.params.username.replace(/_/g, ' ');
@@ -20,7 +21,7 @@ const MapWrapper = (props) => {
   return (
       <>
         <Map>
-
+          {props.user.selectedUser ? <LocationMarkerLayer currentUser={props.user.selectedUser}/> : null }
         </Map>
       </>
   )
@@ -30,4 +31,4 @@ const mapStateToProps = state => ({ user: state.user})
 export default connect(
     mapStateToProps,
     { getUserInfo, addMarker }
-)(MapWrapper);
+)(UserMap);

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import MapWrapper from './Map/MapWrapper';
+import UserMap from './UserMap/UserMap';
 import { connect } from 'react-redux';
 import './UserDashboard.scss';
 
@@ -10,7 +10,7 @@ const UserDashboard = (props) => {
       <div className="sidebar">
       </div>
       <div className="map platformed">
-        { props.user.info ? <MapWrapper {...props}/> : null }
+        { props.user.info ? <UserMap {...props}/> : null }
       </div>
       <div className="sidebar">
       </div>

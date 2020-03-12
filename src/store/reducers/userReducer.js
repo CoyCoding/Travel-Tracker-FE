@@ -16,7 +16,7 @@ import {
   LOG_OUT
 } from '../actions/authActions';
 
-import buildLocationArray from './utils/locationsBuilder';
+import buildLocationArray from '../../utils/locationsBuilder';
 
 const initialState = {
     selectedUser: undefined,
@@ -36,7 +36,7 @@ const userReducer = (state = initialState, action) => {
     case GET_CURRENT_USER_INFO_SUCCESS:
       return{
         ...state,
-        locations: buildLocationArray(action.info),
+        locations: buildLocationArray(action.info, true),
         info: action.info,
         gettingUserInfo: false,
       }
@@ -61,7 +61,10 @@ const userReducer = (state = initialState, action) => {
 
       return{
         ...state,
-        selectedUser: action.selectedUser
+        selectedUser: {
+          ...action.selectedUser, 
+          locations: buildLocationArray(action.selectedUser, false)
+        }
       }
     case  GET_USER_INFO_FAIL:
       return{
