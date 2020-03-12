@@ -3,9 +3,9 @@ import LogInForm from './comps/LogInForm';
 import SignUpForm from './comps/SignUpForm';
 import { connect } from 'react-redux';
 import { clearErrors } from '../../store/actions/authActions';
-import './Home.scss'
+import './SignIn.scss'
 
-const Home = (props) => {
+const SignIn = (props) => {
   const [formSelection, setForm] = useState(props.match.path);
 
   useEffect(() => {
@@ -34,4 +34,4 @@ const Home = (props) => {
   )
 }
 
-export default connect(null, {clearErrors})(Home);
+export default connect(null, {clearErrors})(SignIn);

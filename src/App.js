@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import history from './utils/history.js';
 import { connect } from 'react-redux';
-import Home from './views/Home/Home';
+import SignIn from './views/SignIn/SignIn';
 import NotFound from './views/NotFound/NotFound';
 import CurrentUserDashboard from './views/CurrentUserDashboard/CurrentUserDashboard';
 import UserDashboard from './views/UserDashboard/UserDashboard';
@@ -26,9 +26,9 @@ const App = (props) => {
       <NavBar/>
       <div className="app">
         <Switch>
-          <PublicRoute path='/' exact component={Home}/>
-          <PublicRoute path='/LogIn' exact component={Home}/>
-          <PublicRoute path='/SignUp' exact component={Home}/>
+          <PublicRoute path='/' exact component={SignIn}/>
+          <PublicRoute path='/LogIn' exact component={SignIn}/>
+          <PublicRoute path='/SignUp' exact component={SignIn}/>
           <PrivateRoute path='/Home' exact component={CurrentUserDashboard}/>
           <PrivateRoute path='/u/:username' component={UserDashboard}/>
           <Route component={NotFound}/>
