@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import Map from './Map/Map';
+import Map from '../../comps/Map/Map';
 import MarkerForm from './MarkerForm/MarkerForm';
-import AllLocations from './Map/AllLocations/AllLocations';
-import AddLocation from './Map/AddLocation/AddLocation';
+import AllLocations from './Markers/AllLocations/AllLocations';
+import AddLocation from './Markers/AddLocation/AddLocation';
 import { connect } from 'react-redux';
 import { addMarker } from '../../store/actions/locationActions';
 import './CurrentUserDashboard.scss';

@@ -42,14 +42,13 @@ export const getCurrentUserInfo = () => dispatch => {
     });
 }
 
-export const getUserInfo = (username) => dispatch => {
+export const getUserInfo = (username, history) => dispatch => {
   dispatch({
     type: GETTING_USER_INFO
   });
   console.log(authHeaders)
   axios.post('/api/locations/user', username, authHeaders)
     .then((res) => {
-      console.log(res)
       dispatch({
         type: GET_USER_INFO_SUCCESS,
         selectedUser: res.data,
@@ -57,6 +56,8 @@ export const getUserInfo = (username) => dispatch => {
     })
     .catch((err) => {
       errorDispatcher(err)(dispatch);
+      // Push Home on error other than 401
+      history.push('/Home')
       dispatch({
         type: GET_USER_INFO_FAIL,
         error: err.response.data.error.message || 'Api Down',

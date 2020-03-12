@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactMapGL from 'react-map-gl';
 
 import { connect } from 'react-redux';
-import { moveViewport } from '../../../store/actions/locationActions';
+import { moveViewport } from '../../store/actions/locationActions';
 
 
 const TOKEN = ;

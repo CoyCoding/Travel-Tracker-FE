@@ -1,19 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import Map from './Map';
+import Map from '../../../comps/Map/Map';
 import { connect } from 'react-redux';
 import { getUserInfo } from '../../../store/actions/userActions';
 import { addMarker } from '../../../store/actions/locationActions';
 
 const MapWrapper = (props) => {
-  const [isUserDataLoaded, setDataLoaded] = useState(false);
 
-
+  useEffect(()=>{
+    const usernameParam = props.match.params.username.replace(/_/g, ' ');
+    const currentUser = props.user.info.username;
+    const history = props.history
+    if(usernameParam === currentUser){
+      history.push('/Home');
+    } else {
+      props.getUserInfo({username: usernameParam}, history)
+    }
+  },[])
 
   return (
       <>
         <Map>
-          <div onClick={()=>{props.getUserInfo({username: props.match.params.username})}}>click</div>
-          {isUserDataLoaded ? 'props.user.selectedUser.username' : null}
+
         </Map>
       </>
   )
