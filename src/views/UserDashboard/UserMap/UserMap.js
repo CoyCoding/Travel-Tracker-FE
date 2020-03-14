@@ -6,11 +6,10 @@ import { getUserInfo } from '../../../store/actions/userActions';
 import { addMarker } from '../../../store/actions/locationActions';
 
 const UserMap = (props) => {
-
+  const history = props.history
   useEffect(()=>{
     const usernameParam = props.match.params.username.replace(/_/g, ' ');
     const currentUser = props.user.info.username;
-    const history = props.history
     if(usernameParam === currentUser){
       history.push('/Home');
     } else {

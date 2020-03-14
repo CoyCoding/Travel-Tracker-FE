@@ -40,4 +40,30 @@
       cursor: default;
     }
   }
+
+  .current-user-title{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    border-bottom: 1px solid #1cb9d9;
+    justify-content: space-between;
+    .profile-img{
+      max-width: 35px;
+      border-radius: 50%;
+      height: auto;
+      width: 100%;
+    }
+    h3{
+      font-weight: 700;
+      color: #1cbcd9;
+      font-size: 20px;
+      white-space: pre-line;
+      word-break: break-all;
+    }
+    svg{
+      font-size: 20px;
+      color: #1cbcd9;
+    }
+  }
 }

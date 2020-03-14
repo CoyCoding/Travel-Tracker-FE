@@ -7,9 +7,8 @@ export const buildLocationArray = (user, withFollowers) => {
 
   if(withFollowers){
       user.following.forEach(followedUser => {
-       if(followedUser.hasOwnProperty('locations'))
        followedUser.locations.forEach(location => {
-         location.user = user.username;
+         location.user = followedUser.username;
          locArray.push(location);
        });
     });

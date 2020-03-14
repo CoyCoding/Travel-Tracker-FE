@@ -9,9 +9,7 @@ const UserDashboard = (props) => {
     <div className="user-dash">
       <div className="sidebar">
       </div>
-      <div className="map platformed">
         { props.user.info ? <UserMap {...props}/> : null }
-      </div>
       <div className="sidebar">
       </div>
     </div>
