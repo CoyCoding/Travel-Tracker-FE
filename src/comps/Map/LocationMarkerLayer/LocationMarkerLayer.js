@@ -10,7 +10,7 @@ function LocationMarkerLayer(props) {
 
   useEffect(()=>{
     setCurrentLocations(props.currentUser)
-  },[props.currentUser])
+  },[props.currentUser, props.filters])
 
   const togglePopUp = (id, state) => {
     setShowPopup({
@@ -50,7 +50,7 @@ function LocationMarkerLayer(props) {
   );
 }
 
-const mapStateToProps = state => ({ user: state.user, filters: state.filters})
+const mapStateToProps = state => ({ user: state.user, ...state.filters})
 export default connect(
     mapStateToProps
 )(LocationMarkerLayer);

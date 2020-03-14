@@ -1,26 +1,29 @@
-.user-dash{
+.user-dash {
   height: inherit;
   display: flex;
   background: #ececec;
-  .sidebar{
-    width: 300px;
-    box-shadow: #c2cfde 0px 0px 10px 2px;
-    z-index: 2;
-  }
-  .map{
-    flex: 1;
-    background: darkred;
-    z-index: 0;
-  }
-  .platformed{
+
+
+  .platformed {
     background: #ececec;
     z-index: 1;
     position: relative;
     overflow: hidden;
-    .mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-bottom-right{
+    background: white;
+    .shadow{
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      box-shadow: inset #484848 1px 1px 2px;
+      z-index: 3;
+      pointer-events:none;
+    }
+    .mapboxgl-ctrl-bottom-left,
+    .mapboxgl-ctrl-bottom-right {
       display: none;
     }
-    .tooltip{
+
+    .tooltip {
       position: absolute;
       border-radius: 5px;
       background: #000000bd;
@@ -29,41 +32,80 @@
       display: flex;
       padding: 10px;
     }
+
     .mapboxgl-marker {
       width: 16px;
+
       > .stationary {
         cursor: pointer;
       }
     }
-    .mapboxgl-popup{
+
+    .mapboxgl-popup {
       z-index: 4;
       cursor: default;
     }
   }
 
-  .current-user-title{
+  // Left Sidebar
+  .sidebar {
+    width: 300px;
+    z-index: 2;
+    height: 100%;
+    flex-direction: column;
     display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    border-bottom: 1px solid #1cb9d9;
-    justify-content: space-between;
-    .profile-img{
-      max-width: 35px;
-      border-radius: 50%;
-      height: auto;
+    box-shadow: #000000 0 0 4px 0;
+
+    // Top tilebar
+    .current-user-title {
+      display: flex;
+      align-items: center;
       width: 100%;
+      padding: 10px;
+      border-bottom: 1px solid #efe8d7;
+      justify-content: space-between;
+      color: white;
+      background: #6ba2dd;
+      .profile-img {
+        max-width: 35px;
+        border-radius: 50%;
+        height: auto;
+        width: 100%;
+      }
+
+      h3 {
+        font-weight: 700;
+        font-size: 20px;
+        white-space: pre-line;
+        word-break: break-all;
+      }
+
+      svg {
+        font-size: 20px;
+      }
     }
-    h3{
-      font-weight: 700;
-      color: #1cbcd9;
-      font-size: 20px;
-      white-space: pre-line;
-      word-break: break-all;
+
+    // ADD Marker
+    .add-marker-btn {
+      font-weight: 100;
+      background: #6ba2dd;
+      font-size: 2rem;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      color: white;
     }
-    svg{
-      font-size: 20px;
-      color: #1cbcd9;
+
+    .scroll-container-wrapper {
+      max-height: 100% !important;
+      height: 100% !important;
+      flex: 1;
+      margin: 10px 0;
+
+      > div:first-of-type {
+        max-height: 100% !important;
+        overflow-x: hidden !important;
+      }
     }
   }
 }

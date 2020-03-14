@@ -12,9 +12,9 @@ const NavBar = (props) => {
 
   return (
     <nav className="app-header">
-      <div>header</div>
-      <ul>
-        <li onClick={() => logout()}>logout</li>
+      <h1>Travel Tracker</h1>
+      <ul className="nav-list">
+        <li className='nav-btn' onClick={() => logout()}>logout</li>
       </ul>
     </nav>
   )

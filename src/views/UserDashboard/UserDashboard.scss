@@ -2,11 +2,6 @@
   height: inherit;
   display: flex;
   background: #ececec;
-  .sidebar{
-    width: 300px;
-    box-shadow: #c2cfde 0px 0px 10px 2px;
-    z-index: 2;
-  }
   .map{
     flex: 1;
     background: darkred;

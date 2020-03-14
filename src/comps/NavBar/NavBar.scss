@@ -3,9 +3,32 @@
 .app-header{
   display: flex;
   position: fixed;
-  background: #1CCAD8;
-  background: linear-gradient(#1cb9d9 50%, #1CCAD8);
+  background: #6ba2dd;
   width: 100%;
   height: 48px;
   z-index: 100;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  h1{
+    font-size: 2rem;
+    font-weight: 800;
+    color: #9acccd;
+    max-width: 280px;
+    width: 100%;
+    text-align: center;
+  }
+  .nav-list{
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  .nav-btn{
+    padding-left: 10px;
+    border-left: 1px solid #ffffff54;
+    color: white;
+    text-transform: capitalize;
+    font-size: 1.3rem;
+    font-weight: 100;
+  }
 }

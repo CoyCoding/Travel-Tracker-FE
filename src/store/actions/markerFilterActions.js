@@ -1,6 +1,6 @@
 export const SET_FILTER = "ADD_FILTER";
 
-export const toggleFilter = (filters) => dispatch => {
+export const setFilters = (filters) => dispatch => {
   dispatch({
     type: SET_FILTER,
     filters: filters,
