@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCog } from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux';
 import { logout } from '../../store/actions/authActions';
+import SearchIcon from '../Icons/SearchIcon';
 
 import './NavBar.scss';
 
@@ -15,14 +16,14 @@ const NavBar = (props) => {
   return (
     <nav className="app-header">
       <h1>Travel Tracker</h1>
+      <div className="search-bar">
+        <input type="text" placeholder="Find Users..."/>
+        <SearchIcon className="search"/>
+      </div>
       <ul className="nav-list">
-        <li>
-          <p>Search</p>
-          <input type="text"/>
-        </li>
         <li className="uname">
           <p>Settings</p>
-          <FontAwesomeIcon icon={faCog}/>
+          <FontAwesomeIcon className="cog" icon={faCog}/>
         </li>
         <li className='nav-btn' onClick={() => logout()}>logout</li>
       </ul>

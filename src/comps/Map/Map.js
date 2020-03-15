@@ -18,7 +18,6 @@ function Map(props) {
 
   return (
     <div className="map platformed">
-      <div className="shadow"></div>
       <ReactMapGL
       mapboxApiAccessToken={TOKEN}
       {...props.location.viewport}

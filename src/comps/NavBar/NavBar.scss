@@ -10,16 +10,46 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 10px;
+  box-shadow: black 0 0 2px;
 
   h1 {
     font-size: 2rem;
     font-weight: 800;
     color: #9acccd;
-    max-width: 280px;
-    width: 100%;
-    text-align: center;
   }
-
+  .search-bar{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    input{
+      font-size: 1rem;
+      border: none;
+      font-weight: 100;
+      padding: 8px 5px 8px 5px;
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+      flex-grow: 1;
+    }
+    .search{
+      width: 40px;
+      height: 34px;
+      background: $dark-blue;
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      svg{
+        display: flex;
+        width: 18px;
+        justify-content: center;
+        align-items: center;
+        color: white;
+      }
+    }
+  }
   .nav-list {
     height: 100%;
     display: flex;
@@ -39,21 +69,18 @@
       display: flex;
       align-items: center;
       color: white;
-      p {
-        padding-right: 10px;
-      }
-      input{
-        font-size: 1.1rem;
-      }
     }
 
-    svg {
+    .cog {
       margin-top: 2px;
       font-size: 1.3rem;
+      display: none;
+      padding-left: 10px;
     }
   }
 
   .nav-btn {
     text-transform: capitalize;
+    cursor: pointer;
   }
 }
