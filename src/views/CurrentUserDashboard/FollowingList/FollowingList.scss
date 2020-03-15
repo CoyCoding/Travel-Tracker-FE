@@ -2,10 +2,31 @@
   display: flex;
   padding: 10px;
   align-items: center;
+  justify-content: space-between;
+  font-weight: 500;
+  color: #2d2d2d;
   .img-wrapper{
     max-width: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-left: 3px;
     img{
       width: 100%;
+      display: block;
     }
+  }
+  .icon-wrapper{
+    border-left: solid 1px gainsboro;
+    padding: 10px 22px 10px 22px;
+    color: #31339e;
+    cursor: pointer;
+  }
+}
+
+.tt-popup{
+  .MuiPaper-root{
+    margin-left: 13px !important;
+    box-shadow: none !important;
+    transition: all 2s;
   }
 }

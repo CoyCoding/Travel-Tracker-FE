@@ -19,7 +19,9 @@ const CurrentUserDashboard = (props) => {
          <div className="user-dash">
             <div className="sidebar">
               <div className="current-user-title">
-                <img className="profile-img" alt={props.user.info.username + 'profile'} src="https://static-cdn.jtvnw.net/jtv_user_pictures/a0b2123f305b333d-profile_image-300x300.png"/>
+                <div className="img-wrapper">
+                  <img width="36" height="36" className="profile-img" alt={props.user.info.username + 'profile'} src="https://static-cdn.jtvnw.net/jtv_user_pictures/a0b2123f305b333d-profile_image-300x300.png"/>
+                </div>
                 <h3>{props.user.info.username}</h3>
                 <FontAwesomeIcon icon={faCog}/>
               </div>
