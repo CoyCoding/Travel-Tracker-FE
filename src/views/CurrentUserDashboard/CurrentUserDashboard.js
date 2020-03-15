@@ -4,6 +4,7 @@ import MarkerForm from './MarkerForm/MarkerForm';
 import LocationMarkerLayer from '../../comps/Map/LocationMarkerLayer/LocationMarkerLayer';
 import AddLocation from './Markers/AddLocation/AddLocation';
 import FollowingList from './FollowingList/FollowingList';
+import ShrinkIcon from '../../comps/Icons/ShrinkIcon'
 import { connect } from 'react-redux';
 import { addMarker } from '../../store/actions/locationActions';
 import './CurrentUserDashboard.scss';
@@ -21,6 +22,7 @@ const CurrentUserDashboard = (props) => {
                   <img width={36} height={36} className="profile-img" alt={props.user.info.username + 'profile'} src="https://static-cdn.jtvnw.net/jtv_user_pictures/a0b2123f305b333d-profile_image-300x300.png"/>
                 </div>
                 <h3>{props.user.info.username}</h3>
+                <ShrinkIcon className="arrow"/>
               </div>
               <FollowingList/>
               <div className='add-marker-btn'>Add Marker</div>

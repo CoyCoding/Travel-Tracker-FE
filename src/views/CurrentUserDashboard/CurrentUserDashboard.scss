@@ -79,9 +79,12 @@
         white-space: pre-line;
         word-break: break-all;
       }
-
-      svg {
-        font-size: 20px;
+      .arrow{
+        max-width: 25px;
+        width: 100%;
+        margin-top: 4px;
+        fill: white;
+        cursor: pointer;
       }
     }
 
