@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import {Marker} from 'react-map-gl';
-import LocationIcon from '../../../../comps/Map/LocationIcon';
+import LocationIcon from '../../../../comps/Icons/LocationIcon';
 import { moveLocation } from '../../../../store/actions/locationActions';
 
 function AddLocation(props) {

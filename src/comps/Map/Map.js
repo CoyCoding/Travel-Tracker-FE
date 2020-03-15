@@ -10,6 +10,7 @@ const TOKEN = 'pk.eyJ1IjoiZmx1ZmZ5dG95Y295IiwiYSI6ImNrNzIwcWd0MjBiOXczb253OWpneX
 const settings = {
   dragRotate: false,
   touchRotate: false,
+  minZoom: 1.7,
 }
 function Map(props) {
   const _onViewportChange = (viewport) => {

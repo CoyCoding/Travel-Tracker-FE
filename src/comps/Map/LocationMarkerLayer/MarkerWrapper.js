@@ -1,6 +1,6 @@
 import React from 'react';
 import {Marker, Popup} from 'react-map-gl';
-import LocationIcon from '../LocationIcon';
+import LocationIcon from '../../Icons/LocationIcon';
 
 const popupSettings = {
   closeButton: true,

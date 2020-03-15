@@ -81,14 +81,53 @@
     }
 
     // ADD Marker
-    .add-marker-btn {
-      font-weight: 100;
+    .add-marker-bar {
+      font-weight: 600;
       background: #6ba2dd;
-      font-size: 2rem;
-      padding: 10px;
+      font-size: 20px;
+      text-transform: uppercase;
       display: flex;
       justify-content: center;
       color: white;
+      max-height: 52px;
+      height: 100%;
+      padding: 8px;
+      .add-marker-btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: solid white 2px;
+        border-radius: 10px;
+        height: 100%;
+        transition: all 1s;
+        cursor: pointer;
+        padding: 0px 16px;
+        h3{
+          margin-right: 10px;
+          transition: all 1s;
+        }
+        .icon{
+          width: 15px;
+          height: auto;
+          svg{
+            fill: white;
+            transition: all 1s;
+          }
+        }
+        &:hover{
+          background: white;
+          h3{
+            color: #6ba2dd;
+          }
+          .icon{
+            svg{
+              fill: #6ba2dd;
+            }
+          }
+
+        }
+      }
+
     }
 
     .scroll-container-wrapper {

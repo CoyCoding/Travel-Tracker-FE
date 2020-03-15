@@ -5,6 +5,7 @@ import LocationMarkerLayer from '../../comps/Map/LocationMarkerLayer/LocationMar
 import AddLocation from './Markers/AddLocation/AddLocation';
 import FollowingList from './FollowingList/FollowingList';
 import ShrinkIcon from '../../comps/Icons/ShrinkIcon'
+import LocationIcon from '../../comps/Icons/LocationIcon'
 import { connect } from 'react-redux';
 import { addMarker } from '../../store/actions/locationActions';
 import './CurrentUserDashboard.scss';
@@ -24,7 +25,12 @@ const CurrentUserDashboard = (props) => {
                 <ShrinkIcon className="arrow"/>
               </div>
               <FollowingList/>
-              <div className='add-marker-btn'>Add Marker</div>
+              <div className='add-marker-bar'>
+                <div className="add-marker-btn">
+                  <h3>Add Marker</h3>
+                  <LocationIcon className="icon"/>
+                </div>
+              </div>
             </div>
             <Map>
                 {props.location.movingMarker ? <AddLocation /> : <LocationMarkerLayer filter currentUser={props.user}/>}
