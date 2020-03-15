@@ -19,24 +19,37 @@ const useStyles = makeStyles(theme => ({
 const FollowingList = (props) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [openUser, setOpenUser] = React.useState(undefined);
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover-tt' : undefined;
 
-  const handleClick = event => {
-    setAnchorEl(event.currentTarget);
+  useEffect(() => {
+    const setFromEvent = e => {
+      const element = e.target.getAttribute('data-id');
+      if(open && element !== 'popup-btn'){
+        setAnchorEl(null)
+      }
+    };
+    window.addEventListener("click", setFromEvent);
+    return () => {
+      window.removeEventListener("click", setFromEvent);
+    };
+  }, [open]);
+
+  const handleClick = (event, user) => {
+    setOpenUser(user);
+    console.log('setting Anchor')
+    setAnchorEl(event.target.closest(".following-user"));
   };
 
   const handleClose = () =>{
     setAnchorEl(null)
   }
 
-  const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover-tt' : undefined;
-
   const setFilters = (user) => {
     const togglePos = !props.filters[user.username];
     props.setFilters({...props.filters, [user.username]: togglePos});
   }
-
-  //<div onClick={() => {setFilters(followingUser)}}>toggle</div>
 
   const renderFollowingList = () => {
     return props.user.info.following.map((followingUser) => {
@@ -48,8 +61,8 @@ const FollowingList = (props) => {
             </div>
             <h4>{followingUser.username}</h4>
 
-            <div className="icon-wrapper">
-              <FontAwesomeIcon onClick={(e)=>{handleClick(e)}} icon={faEllipsisV} />
+            <div data-id={'popup-btn'} onClick={(e)=>{handleClick(e, followingUser)}} className="icon-wrapper">
+              <FontAwesomeIcon  icon={faEllipsisV} />
             </div>
           </div>
         </>
@@ -73,20 +86,21 @@ const FollowingList = (props) => {
              id={id}
              open={open}
              className="tt-popup"
-             onClick={()=>{console.log('click')}}
              anchorEl={anchorEl}
              onClose={handleClose}
              anchorOrigin={{
-               vertical: 'center',
-               horizontal: 'center',
-             }}
-             transformOrigin={{
-               vertical: 'center',
-               horizontal: 'left',
-             }}
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
           >
-             <Typography className={classes.typography}>Hide Markers</Typography>
-             <Typography className={classes.typography}>Unfollow</Typography>
+            <div id="popup">
+             <Typography data-id={'popup-btn'} onClick={()=>{console.log(openUser)}} className={classes.typography}>Hide Markers</Typography>
+             <Typography data-id={'popup-btn'} onClick={()=>{console.log(openUser)}} className={classes.typography}>Unfollow</Typography>
+            </div>
            </Popover>
          </>
       }

@@ -1,6 +1,6 @@
 @import '../../globalSass/_variables.scss';
 
-.app-header{
+.app-header {
   display: flex;
   position: fixed;
   background: #6ba2dd;
@@ -10,7 +10,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 10px;
-  h1{
+
+  h1 {
     font-size: 2rem;
     font-weight: 800;
     color: #9acccd;
@@ -18,17 +19,41 @@
     width: 100%;
     text-align: center;
   }
-  .nav-list{
+
+  .nav-list {
     height: 100%;
     display: flex;
     align-items: center;
+    li:first-of-type{
+      border-left: none;
+    }
+    li:last-of-type{
+      padding-right: 0px;
+    }
+    li {
+      padding-right: 16px;
+      border-left: 1px solid #ffffff54;
+      font-size: 1.3rem;
+      font-weight: 100;
+      padding-left: 10px;
+      display: flex;
+      align-items: center;
+      color: white;
+      p {
+        padding-right: 10px;
+      }
+      input{
+        font-size: 1.1rem;
+      }
+    }
+
+    svg {
+      margin-top: 2px;
+      font-size: 1.3rem;
+    }
   }
-  .nav-btn{
-    padding-left: 10px;
-    border-left: 1px solid #ffffff54;
-    color: white;
+
+  .nav-btn {
     text-transform: capitalize;
-    font-size: 1.3rem;
-    font-weight: 100;
   }
 }

@@ -6,6 +6,7 @@ import SignIn from './views/SignIn/SignIn';
 import NotFound from './views/NotFound/NotFound';
 import CurrentUserDashboard from './views/CurrentUserDashboard/CurrentUserDashboard';
 import UserDashboard from './views/UserDashboard/UserDashboard';
+import Footer from './comps/Footer/Footer';
 import NavBar from './comps/NavBar/NavBar';
 import PrivateRoute from './comps/RouteHocs/PrivateRoute';
 import PublicRoute from './comps/RouteHocs/PublicRoute';
@@ -34,6 +35,7 @@ const App = (props) => {
           <Route component={NotFound}/>
         </Switch>
       </div>
+      <Footer/>
     </Router>
   );
 }

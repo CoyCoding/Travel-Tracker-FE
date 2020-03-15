@@ -21,12 +21,21 @@
     color: #31339e;
     cursor: pointer;
   }
+  svg{
+    pointer-events: none;
+  }
 }
-
+#simple-popover-tt{
+  pointer-events: none;
+}
 .tt-popup{
   .MuiPaper-root{
-    margin-left: 13px !important;
+    border-radius: 0px !important;
     box-shadow: none !important;
     transition: all 2s;
+    margin-top: -1px;
+    #popup{
+      pointer-events: auto;
+    }
   }
 }

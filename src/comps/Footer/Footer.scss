@@ -1,0 +1,14 @@
+@import '../../globalSass/_variables.scss';
+
+.app-footer{
+  display: flex;
+  position: fixed;
+  background: #6ba2dd;
+  width: 100%;
+  height: 48px;
+  z-index: 100;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  bottom: 0;
+}
