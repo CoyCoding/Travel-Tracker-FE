@@ -11,7 +11,7 @@ import { addMarker } from '../../store/actions/locationActions';
 import './CurrentUserDashboard.scss';
 
 const CurrentUserDashboard = (props) => {
-
+  console.log(props.history)
   return (
     <>
       {
@@ -24,7 +24,7 @@ const CurrentUserDashboard = (props) => {
                 <h3>FOLLOWED USERS</h3>
                 <ShrinkIcon className="arrow"/>
               </div>
-              <FollowingList/>
+              <FollowingList history={props.history}/>
               <div className='add-marker-bar'>
                 <div className="add-marker-btn">
                   <h3>Add Marker</h3>

@@ -8,6 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 import { Scrollbars } from 'react-custom-scrollbars';
+import {buildUsernameUrl} from '../../../utils/urlBuilder';
 import './FollowingList.scss';
 
 const useStyles = makeStyles(theme => ({
@@ -57,7 +58,7 @@ const FollowingList = (props) => {
         <>
           <div className="following-user">
             <div className="img-wrapper">
-              <img className="profile-img" alt={props.user.info.username + 'profile'} src="https://static-cdn.jtvnw.net/jtv_user_pictures/a0b2123f305b333d-profile_image-300x300.png"/>
+              <img className="profile-img" alt={props.user.info.username + ' profile'} src="https://static-cdn.jtvnw.net/jtv_user_pictures/a0b2123f305b333d-profile_image-300x300.png"/>
             </div>
             <h4>{followingUser.username}</h4>
 
@@ -98,8 +99,14 @@ const FollowingList = (props) => {
               }}
           >
             <div id="popup">
-             <Typography data-id={'popup-btn'} onClick={()=>{console.log(openUser)}} className={classes.typography}>Hide Markers</Typography>
+             <Typography
+             data-id={'popup-btn'}
+             className={classes.typography}
+             onClick={()=>{setFilters(openUser)}}>
+              {!openUser || !props.filters[openUser.username] ?  'Hide Markers' : 'Show markers'}
+             </Typography>
              <Typography data-id={'popup-btn'} onClick={()=>{console.log(openUser)}} className={classes.typography}>Unfollow</Typography>
+             <Typography data-id={'popup-btn'} onClick={()=>{props.history.push(buildUsernameUrl(openUser.username))}} className={classes.typography}>View Page</Typography>
             </div>
            </Popover>
          </>
